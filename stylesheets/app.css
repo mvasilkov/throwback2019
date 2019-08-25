@@ -1,3 +1,8 @@
+body {
+    margin: 0;
+    overflow: hidden;
+}
+
 canvas {
     background-color: #08f;
     display: block;
@@ -7,5 +12,6 @@ canvas {
 
 #container {
     height: 540px;
+    transform-origin: 0 0;
     width: 960px;
 }
