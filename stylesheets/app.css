@@ -1,0 +1,11 @@
+canvas {
+    background-color: #08f;
+    display: block;
+    image-rendering: optimizespeed;
+    image-rendering: pixelated;
+}
+
+#container {
+    height: 540px;
+    width: 960px;
+}
