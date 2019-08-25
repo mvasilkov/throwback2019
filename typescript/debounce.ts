@@ -11,11 +11,11 @@ function debounce(proc: Proc, wait: number): Proc {
 
         if (sleeping < wait) {
             setTimeout(wrapped, wait - sleeping)
+            return
         }
-        else {
-            waiting = false
-            proc()
-        }
+
+        waiting = false
+        proc()
     }
 
     return function () {

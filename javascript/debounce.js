@@ -7,11 +7,10 @@ function debounce(proc, wait) {
         const sleeping = Date.now() - lastCall;
         if (sleeping < wait) {
             setTimeout(wrapped, wait - sleeping);
+            return;
         }
-        else {
-            waiting = false;
-            proc();
-        }
+        waiting = false;
+        proc();
     }
     return function () {
         lastCall = Date.now();
