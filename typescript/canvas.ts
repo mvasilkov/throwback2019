@@ -32,6 +32,6 @@ function setupResize() {
         container.style.transform = t.join('')
     }
 
-    addEventListener('resize', setSize)
+    addEventListener('resize', debounce(setSize, 100))
     setSize()
 }

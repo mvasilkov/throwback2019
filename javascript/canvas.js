@@ -25,6 +25,6 @@ function setupResize() {
         t.push(`translate3d(${rotate ? -tx - SCREEN_WIDTH : tx}px,${ty}px,0)`);
         container.style.transform = t.join('');
     }
-    addEventListener('resize', setSize);
+    addEventListener('resize', debounce(setSize, 100));
     setSize();
 }
