@@ -1,7 +1,7 @@
 /// <reference path="throwback2019.d.ts" />
 
 function updateCuts() {
-    let a: IPoint
+    let a: IVec2
     if (pointer.active) a = pointer
     else if (pointerFollowing.length) a = pointerFollowing.pop()!
     else return

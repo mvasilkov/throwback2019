@@ -1,17 +1,12 @@
 /// <reference path="throwback2019.d.ts" />
 
-interface IPoint {
-    x: number
-    y: number
-}
-
 const pointer = {
     active: false,
     x: 0,
     y: 0,
 }
 
-const pointerFollowing: IPoint[] = []
+const pointerFollowing: IVec2[] = []
 
 function setupPointer() {
     function setPos(event: MouseEvent) {
