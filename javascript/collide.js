@@ -11,3 +11,14 @@ function lineLine(p1, p2, p3, p4) {
         y: p1.y + (a * (p2.y - p1.y)),
     } : { collide: false };
 }
+function lineBox(p1, p2, box) {
+    let things = [];
+    for (let line of [box.top, box.right, box.bottom, box.left]) {
+        const a = lineLine(p1, p2, line[0], line[1]);
+        if (a.collide && (!things.length ||
+            things[things.length - 1].x != a.x ||
+            things[things.length - 1].y != a.y))
+            things.push(a);
+    }
+    return things;
+}

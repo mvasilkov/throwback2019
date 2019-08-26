@@ -1,5 +1,7 @@
 /// <reference path="throwback2019.d.ts" />
 
+const box = new Box({ x: 200, y: 200 }, 60)
+
 function updateCuts() {
     let a: IVec2
     if (pointer.active) a = pointer
@@ -7,8 +9,14 @@ function updateCuts() {
     else return
 
     while (pointerFollowing.length) {
-        let b = pointerFollowing.pop()!
+        const b = pointerFollowing.pop()!
         if (a.x == b.x && a.y == b.y) continue
+
+        const things = lineBox(a, b, box)
+        if (things.length && !box.collide1.collide) box.collide1 = things.pop()!
+        if (things.length && !box.collide2.collide) box.collide2 = things.pop()!
+
+        a = b
     }
 }
 
@@ -21,4 +29,6 @@ function render() {
     }
 
     updateCuts()
+
+    box.render(canvas)
 }

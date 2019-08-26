@@ -5,6 +5,13 @@ interface IVec2 {
     y: number
 }
 
+interface IBox {
+    top: [IVec2, IVec2]
+    right: [IVec2, IVec2]
+    bottom: [IVec2, IVec2]
+    left: [IVec2, IVec2]
+}
+
 interface Collide1 extends IVec2 {
     collide: true
     x: number
@@ -28,4 +35,15 @@ function lineLine(p1: IVec2, p2: IVec2, p3: IVec2, p4: IVec2): Collide {
         x: p1.x + (a * (p2.x - p1.x)),
         y: p1.y + (a * (p2.y - p1.y)),
     } : { collide: false }
+}
+
+function lineBox(p1: IVec2, p2: IVec2, box: IBox): Collide1[] {
+    let things: Collide1[] = []
+    for (let line of [box.top, box.right, box.bottom, box.left]) {
+        const a = lineLine(p1, p2, line[0], line[1])
+        if (a.collide && (!things.length ||
+            things[things.length - 1].x != a.x ||
+            things[things.length - 1].y != a.y)) things.push(a)
+    }
+    return things
 }
