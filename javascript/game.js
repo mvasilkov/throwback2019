@@ -13,11 +13,13 @@ function updateCuts() {
         const b = pointerFollowing.pop();
         if (a.x == b.x && a.y == b.y)
             continue;
-        const things = lineBox(a, b, box);
-        if (things.length && !box.collide1.collide)
-            box.collide1 = things.pop();
-        if (things.length && !box.collide2.collide)
-            box.collide2 = things.pop();
+        const points = lineBox(a, b, box);
+        // if (points.length && !box.collide1.collide) box.collide1 = points.pop()!
+        // if (points.length && !box.collide2.collide) box.collide2 = points.pop()!
+        if (points.length)
+            box.putCollide(points.pop());
+        if (points.length)
+            box.putCollide(points.pop());
         a = b;
     }
 }
