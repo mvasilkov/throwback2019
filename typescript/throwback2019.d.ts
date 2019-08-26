@@ -1,4 +1,4 @@
-/// <reference path="collision.ts" />
+/// <reference path="collide.ts" />
 /// <reference path="debounce.ts" />
 /// <reference path="setup.ts" />
 /// <reference path="canvas.ts" />
