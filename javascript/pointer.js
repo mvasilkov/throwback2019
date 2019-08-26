@@ -5,9 +5,13 @@ const pointer = {
     x: 0,
     y: 0,
 };
+const pointerFollowing = [];
 function setupPointer() {
     function setPos(event) {
-        pointer.active = true;
+        if (pointer.active)
+            pointerFollowing.push({ x: pointer.x, y: pointer.y });
+        else
+            pointer.active = true;
         pointer.x = event.offsetX;
         pointer.y = event.offsetY;
     }
